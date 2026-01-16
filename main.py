@@ -57,8 +57,10 @@ async def startup_event():
 
 @app.get("/market")
 async def get_market():
+    cached_data = await get_market()
     return cached_data
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
     uvicorn.run(app, host="0.0.0.0", port=port)
+
